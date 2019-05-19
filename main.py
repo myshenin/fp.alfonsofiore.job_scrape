@@ -20,7 +20,7 @@ while len(page_posts) != 0:
     job_extractor.set_url(f'{Constants.URL_TEMPLATE.value}&page={page_number}')
     job_extractor.load_page()
     page_posts = job_extractor.extract_data(
-        job_extractor.filtered_posts(job_extractor.is_recent(['today', 'yesterday', '2 days'])))
+        job_extractor.filtered_posts(job_extractor.is_recent(['today', 'yesterday', '2 days', '3 days'])))
     total_posts += page_posts
 
 jobs_dumper = JobsDumper('jobs.csv')

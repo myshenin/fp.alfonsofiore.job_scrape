@@ -17,4 +17,4 @@ class EmailContentGenerator:
         def assemble(x, y):
             return to_html(x) + to_html(y)
 
-        return functools.reduce(assemble, jobs)
+        return functools.reduce(assemble, jobs) if len(jobs) != 0 else ''

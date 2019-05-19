@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from datetime import date, timedelta
 from constants import Constants
+from pyvirtualdisplay import Display
 
 
 class JobExtractor:
@@ -15,7 +16,7 @@ class JobExtractor:
         print('starting driver...')
         options = Options()
         options.headless = True
-        self.driver = webdriver.Firefox(options=options)
+        self.driver = webdriver.Firefox()
         sleep(4)
 
     def close_driver(self):
@@ -24,7 +25,8 @@ class JobExtractor:
         print('closed!')
 
     def load_page(self):
-        self.driver.get(self.url)
+        with Display():
+            self.driver.get(self.url)
         sleep(randint(4, 7))
 
     def is_recent(self, ages):
