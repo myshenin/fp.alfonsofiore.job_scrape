@@ -4,6 +4,7 @@ from random import randint
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from datetime import date, timedelta
+from constants import Constants
 
 
 class JobExtractor:
@@ -60,7 +61,7 @@ class JobExtractor:
             else:
                 days = int(re.findall(r'\d+', posted_date)[0])
                 post_data['posted_date'] = date.today() - timedelta(days=days)
-            post_data['posted_date'] = post_data['posted_date'].strftime('%d %B %Y')
+            post_data['posted_date'] = post_data['posted_date'].strftime(Constants.DATE_FORMAT.value)
             return post_data
 
         return list(map(lambda post: extract_from_post(post), posts))

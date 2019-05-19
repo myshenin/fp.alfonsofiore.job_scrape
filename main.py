@@ -2,6 +2,7 @@ from jobextractor import JobExtractor
 from jobsdumper import JobsDumper
 from constants import Constants
 from emailcontent import EmailContentGenerator
+from emailsender import EmailSender
 
 page_number = 0
 
@@ -27,6 +28,9 @@ jobs_dumper.dump(total_posts)
 
 email_generator = EmailContentGenerator()
 email = email_generator.dump(total_posts)
+
+sender = EmailSender()
+sender.send(email)
 
 print(email)
 job_extractor.close_driver()
