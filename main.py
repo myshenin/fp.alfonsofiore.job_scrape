@@ -1,6 +1,7 @@
 from jobextractor import JobExtractor
 from jobsdumper import JobsDumper
 from constants import Constants
+from emailcontent import EmailContentGenerator
 
 page_number = 0
 
@@ -24,5 +25,8 @@ while len(page_posts) != 0:
 jobs_dumper = JobsDumper('jobs.csv')
 jobs_dumper.dump(total_posts)
 
-print(total_posts)
+email_generator = EmailContentGenerator()
+email = email_generator.dump(total_posts)
+
+print(email)
 job_extractor.close_driver()
