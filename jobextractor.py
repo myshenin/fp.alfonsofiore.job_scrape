@@ -64,3 +64,6 @@ class JobExtractor:
             return post_data
 
         return list(map(lambda post: extract_from_post(post), posts))
+
+    def set_url(self, url):
+        self.url = url
